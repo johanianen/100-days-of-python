@@ -17,4 +17,4 @@ for position in starting_positions:
 
 screen.exitonclick()
 
-#testar igen
+#testar igen och igen
