@@ -35,27 +35,15 @@ while game_is_on:
         food.refresh()
         scoreboard.increase_score()
         snake.extend()
-        playsound("point.wav", False)
 
     if snake.head.xcor() > 280 or snake.head.xcor() < -280 or snake.head.ycor() > 290 or snake.head.ycor() < -280:
         game_is_on = False
-        playsound("gameover.wav", False)
         scoreboard.game_over()
         
 
     for segment in snake.segments[1:]:
         if snake.head.distance(segment) < 10:
-            game_is_on = False
-            playsound("gameover.wav", False)
+            game_is_on = False           
             scoreboard.game_over()
 
-def restart():
-    os.execl(sys.executable, sys.executable, *sys.argv)
-
-def shutdown():
-    os.exit(0)
-
-while True:
-    screen.listen()   
-    #screen.onkey(shutdown, "Right")         
-    #screen.onkey(restart, "Space")
+screen.exitonclick()

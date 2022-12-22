@@ -27,9 +27,3 @@ class Scoreboard(Turtle):
     def game_over(self):
         self.goto(0, 0)
         self.write("GAME OVER", align=ALIGNMENT, font=FONT)
-        time.sleep(1)
-        self.goto(0, -25)
-        self.write("Play again?", align=ALIGNMENT, font=FONT)
-        time.sleep(1)
-        self.goto(0, -50)
-        self.write("y/n", align=ALIGNMENT, font=FONT)
