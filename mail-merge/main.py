@@ -19,5 +19,6 @@ for old_letter in os.listdir(old_letters):
 
 #create new letters
 for name in invited_names.readlines():
-    new_letter = open(f"Output/ReadyToSend/letter for {name}.txt", "w")
-    new_letter.write(letter_text.replace("[name]", name.strip()))
+    name = name.strip()
+    new_letter = open(f"Output/ReadyToSend/letter_for_{name}.txt", "w")
+    new_letter.write(letter_text.replace("[name]", name))
