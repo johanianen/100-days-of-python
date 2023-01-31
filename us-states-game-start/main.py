@@ -30,8 +30,8 @@ wrong_guesses = []
 strikes = 0
 score = len(correct_guesses)
 
-while True:
-    answer = screen.textinput(title="Guess the States", prompt="Type the name of a U.S. state")
+while len(correct_guesses) < 50:
+    answer = screen.textinput(title=f"{len(correct_guesses)}/50 States Correct", prompt="Type the name of a U.S. state")
     answer = answer.title()
     if answer not in states_list:
         strikes += 1
@@ -39,12 +39,14 @@ while True:
         error_text.goto(ERROR_POSITION)
         error_text.write("Nope, that's not a U.S. State", align="center", font=ERROR_FONT)
         time.sleep(ERROR_SLEEPTIME)
+        error_text.clear()
 
     elif answer in correct_guesses:
         strikes += 1
         error_text.goto(ERROR_POSITION)
         error_text.write("You've already guessed that state", align="center", font=ERROR_FONT)
         time.sleep(ERROR_SLEEPTIME)
+        error_text.clear()
 
 
     elif answer in wrong_guesses:
@@ -52,13 +54,11 @@ while True:
         error_text.goto(ERROR_POSITION)
         error_text.write("I already told you once this wasn't a U.S. State! You lose!", align="center", font=ERROR_FONT)
         time.sleep(ERROR_SLEEPTIME)
+        error_text.clear()
 
     else:
         xcor = states_data.loc[states_data["state"] == answer, "x"].item()
         ycor = states_data.loc[states_data["state"] == answer, "y"].item()
-        print(xcor)
-        print(ycor)
-        
         text.goto(xcor, ycor)
         text.write(answer, align="center")
 
